@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <style>
+.calculator{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 500px;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-left: 400px;
+    border-radius: 50px;
+}
+.calculator:hover{
+    box-shadow: 1px 5px 15px red;
+}
+input:not(.text){
+    border-radius: 50px;
+    width:70px;
+    height: 70px;
+    margin: 10px;
+    font-size: 25px;
+    font-weight: 500;
+    cursor: pointer;
+}
+input:hover:not(.text, .operator){
+    background: orange;
+    color: aliceblue;
+}
+.operator{
+    color: orange;
+}
+.operator:hover{
+    background: black;
+    color: aliceblue;
+}
+.output .text{
+    width: 100%;
+    height: 70px;
+    padding:20px;
+    text-align: right;
+    margin-bottom:15px;
+    font-size: 35px;
+    border: 2px solid orange;
+    border-radius: 30px;
+}
+.calculator .equal{
+    width:155px;
+    border-radius: 20px;
+}
+        </style>
+        <title>
+            calculator
+        </title>
+    </head>
+    <body>
+        <div class="calculator">
+            <div class="output"> 
+
+               
+                <input type="text" class="text" placeholder="0" value="">
+
+            </div>
+            <div>
+                <input type="button" value="AC" class="operator AC">
+                <input type="button" value="DEL" class="operator DEL">
+            
+                <input type="button" value="/" class="operator val">
+            </div>
+            <div>
+                <input type="button" value="7" class="val">
+                <input type="button" value="8" class="val">
+                <input type="button" value="9" class="val">
+                <input type="button" value="*" class=" operator val">
+            </div>
+            <div>
+                <input type="button" value="4" class="val">
+                <input type="button" value="5" class="val">
+                <input type="button" value="6" class="val">
+                <input type="button" value="-" class=" operator val">
+            </div>
+            <div>
+                <input type="button" value="1" class="val">
+                <input type="button" value="2" class="val">
+                <input type="button" value="3" class="val">
+                <input type="button" value="+" class=" operator val">
+            </div>
+            <div>
+                <input type="button" value="." class=" operator val">
+                <input type="button" value="0" class="val">
+                <input type="button" value="=" class=" equal operator">
+            </div>
+        </div>
+
+        <script>
+           const output = document.querySelector(".text");
+           const vals = document.querySelectorAll(".val");
+           const clearBtn = document.querySelector(".AC");
+           const deleteBtn = document.querySelector(".DEL");
+           const equalBtn = document.querySelector(".equal");
+            
+           vals.forEach(val=>{
+            val.addEventListener("click",()=>{
+                output.value += val.value;
+            })
+           })
+
+        
+           clearBtn.addEventListener('click' ,()=>{
+            output.value = "";
+           })
+
+  
+           deleteBtn.addEventListener('click' ,()=>{
+            output.value = output .value.slice(0,-1);
+           })
+
+           equalBtn.addEventListener('click' ,()=>{
+            output.value = eval(output.value);
+           })
+
+        </script>
+    </body>
+
+</html>
